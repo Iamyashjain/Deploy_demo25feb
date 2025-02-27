@@ -1,0 +1,40 @@
+name: Practice Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-stage-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Take code
+        uses: actions/checkout@v2
+
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{secrets.SSH_KEY}}
+
+      - name: Deploy to VM
+        run: |
+          ssh -o StrictHostKeyChecking=no unbuntu@3.83.102.203 
+          << 'EOF'
+          set -e
+
+          if [ "/home/ubuntu/Deploy_demo25feb" ]; then
+          
+          else
+          cd /home/ubuntu
+          git clone https://github.com/Iamyashjain/Deploy_demo25feb
+          cd Deploy_demo25feb
+          fi
+
+      
