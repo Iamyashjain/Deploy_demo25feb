@@ -1,39 +1,43 @@
-name: Practice Pipeline
+name: Pipeline Demo
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  deploy-stage-demo:
+  deploy-stage:
     runs-on: ubuntu-latest
 
     steps:
       - name: Take code
         uses: actions/checkout@v2
 
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
 
-      - name: Setup SSH agent
+      - name: Setup SSH Agent
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Deploy to VM
         run: |
-          ssh -o StrictHostKeyChecking=no unbuntu@3.83.102.203 << 'EOF'
-          set -e
+            ssh -o StrictHostKeyChecking=no ubuntu@3.83.102.203 << 'EOF'
+            set -e  # Exit on any command failure
 
-          if [ "/home/ubuntu/Deploy_demo25feb" ]; then
-          
-          else
-          cd /home/ubuntu
-          git clone https://github.com/Iamyashjain/Deploy_demo25feb
-          cd Deploy_demo25feb
-          fi
+            if [ -d "/home/ubuntu/Deploy_demo25feb" ]; then
+            echo "Directory exists, moving ahead..."
+            else
+            cd /home/ubuntu
+            git clone https://github.com/Iamyashjain/Deploy_demo25feb
+            fi
 
-      
+            cd /home/ubuntu/Deploy_demo25feb
+            EOF
+
+
+         
+        
