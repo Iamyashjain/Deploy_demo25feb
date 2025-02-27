@@ -25,8 +25,7 @@ jobs:
 
       - name: Deploy to VM
         run: |
-          ssh -o StrictHostKeyChecking=no unbuntu@3.83.102.203 
-          << 'EOF'
+          ssh -o StrictHostKeyChecking=no unbuntu@3.83.102.203 << 'EOF'
           set -e
 
           if [ "/home/ubuntu/Deploy_demo25feb" ]; then
