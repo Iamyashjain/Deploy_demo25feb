@@ -52,6 +52,8 @@ jobs:
 
             if [ -d "/home/ubuntu/Deploy_demo25feb" ]; then
             echo "Directory exists, moving ahead..."
+            git reset --hard  # Prevent merge conflicts
+            git pull origin main
             else
             cd /home/ubuntu
             git clone https://github.com/Iamyashjain/Deploy_demo25feb
@@ -66,7 +68,7 @@ jobs:
           
             source env/bin/activate
 
-            git pull
+          
 
           
             python -m ensurepip --default-pip
