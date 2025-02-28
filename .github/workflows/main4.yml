@@ -21,11 +21,11 @@ jobs:
 
         - name: run test cases
           run: |
-            'EOF'
+           
             pip install pytest
             pip install httpx
             pytest .
-            EOF
+           
           
 
   
