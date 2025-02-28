@@ -1,0 +1,40 @@
+INFO:     Will watch for changes in these directories: ['D:\\Code-Deploy']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [25320] using StatReload
+INFO:     Started server process [28720]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:52498 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52502 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52555 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52555 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52555 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52555 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52609 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52609 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52611 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52611 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52612 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52621 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52629 - "GET / HTTP/1.1" 200 OK
