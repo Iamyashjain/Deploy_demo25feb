@@ -54,7 +54,7 @@ jobs:
               echo "Directory exists, moving ahead..."
               cd /home/ubuntu/Deploy_demo25feb
               git reset --hard  # Prevent merge conflicts
-              git pull origin main
+              git pull origin master
             else
             cd /home/ubuntu
             git clone https://github.com/Iamyashjain/Deploy_demo25feb
