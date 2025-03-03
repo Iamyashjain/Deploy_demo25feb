@@ -6,28 +6,24 @@ on:
       - master
 
 jobs:
-
   test-case:
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Take code
-          uses: actions/checkout@v2
+    steps:
+      - name: Take code
+        uses: actions/checkout@v2
 
-        - name: Setup Python
-          uses: actions/setup-python@v2
-          with:
-            python-version: '3.8'
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
 
-        - name: run test cases
-          run: |
-           
-            pip install -r requirements.txt
-            pytest .
-           
-          
+      - name: run test cases
+        run: |
 
-  
+          pip install -r requirements.txt
+          pytest .
+
   deploy-stage:
     runs-on: ubuntu-latest
 
@@ -38,7 +34,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: "3.8"
 
       - name: Setup SSH Agent
         uses: webfactory/ssh-agent@v0.5.3
@@ -47,45 +43,48 @@ jobs:
 
       - name: Deploy to VM
         run: |
-            ssh -o StrictHostKeyChecking=no ubuntu@44.204.179.241 << 'EOF'
-            set -e  # Exit on any command failure
+          ssh -o StrictHostKeyChecking=no ubuntu@44.204.179.241 << 'EOF'
+          set -e  # Exit on any command failure
 
-            if [ -d "/home/ubuntu/Deploy_demo25feb" ]; then
-              echo "Directory exists, moving ahead..."
-              cd /home/ubuntu/Deploy_demo25feb
-              git reset --hard  # Prevent merge conflicts
-              git pull origin master
-            else
-            cd /home/ubuntu
-            git clone https://github.com/Iamyashjain/Deploy_demo25feb
-            fi
-
+          if [ -d "/home/ubuntu/Deploy_demo25feb" ]; then
+            echo "Directory exists, moving ahead..."
             cd /home/ubuntu/Deploy_demo25feb
-            sudo apt update && sudo apt install -y python3 python3-venv python3-pip
-            if [ ! -d "env" ]; then
-            python3 -m venv env
-            fi
+            git reset --hard  # Prevent merge conflicts
+            git pull origin master
+          else
+          cd /home/ubuntu
+          git clone https://github.com/Iamyashjain/Deploy_demo25feb
+          fi
 
-          
-            source env/bin/activate
+          cd /home/ubuntu/Deploy_demo25feb
+          sudo apt update && sudo apt install -y python3 python3-venv python3-pip
+          sudo apt install prometheus
+          sudo apt install grafana
+          if [ ! -d "env" ]; then
+          python3 -m venv env
+          fi
 
-          
 
-          
-            python -m ensurepip --default-pip
+          source env/bin/activate
 
-            # Upgrade pip and install requirements (bypassing PEP 668 restrictions)
-            python -m pip install --upgrade pip --break-system-packages
-            python -m pip install -r requirements.txt --break-system-packages
 
-          
 
-            # Restart Uvicorn
-            pkill uvicorn || true  # Ignore error if Uvicorn is not running
 
-            # Start Uvicorn in the background, redirect logs, and detach process
-            nohup env/bin/uvicorn main:app --host 0.0.0.0 --port 8080 > uvicorn.log 2>&1 & disown
+          python -m ensurepip --default-pip
 
-            EOF
-            
-        
+          # Upgrade pip and install requirements (bypassing PEP 668 restrictions)
+          python -m pip install --upgrade pip --break-system-packages
+          python -m pip install -r requirements.txt --break-system-packages
+
+
+
+          # Restart Uvicorn
+          pkill uvicorn || true  # Ignore error if Uvicorn is not running
+
+          # Start Uvicorn in the background, redirect logs, and detach process
+          nohup env/bin/uvicorn main:app --host 0.0.0.0 --port 8080 > uvicorn.log 2>&1 & disown
+
+
+
+
+          EOF
