@@ -65,7 +65,7 @@ jobs:
           sudo wget -q -O - https://packages.grafana.com/gpg.key | sudo tee /usr/share/keyrings/grafana.key
           echo "deb [signed-by=/usr/share/keyrings/grafana.key] https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
           sudo apt update
-          sudo apt install grafana
+          sudo apt install grafana -y
           if [ ! -d "env" ]; then
           python3 -m venv env
           fi
