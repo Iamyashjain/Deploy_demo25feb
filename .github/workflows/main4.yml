@@ -47,11 +47,14 @@ jobs:
 
       - name: Deploy to VM
         run: |
-            ssh -o StrictHostKeyChecking=no ubuntu@44.203.136.127 << 'EOF'
+            ssh -o StrictHostKeyChecking=no ubuntu@44.204.179.241 << 'EOF'
             set -e  # Exit on any command failure
 
             if [ -d "/home/ubuntu/Deploy_demo25feb" ]; then
-            echo "Directory exists, moving ahead..."
+              echo "Directory exists, moving ahead..."
+              cd /home/ubuntu/Deploy_demo25feb
+              git reset --hard  # Prevent merge conflicts
+              git pull origin master
             else
             cd /home/ubuntu
             git clone https://github.com/Iamyashjain/Deploy_demo25feb
@@ -66,7 +69,7 @@ jobs:
           
             source env/bin/activate
 
-            git pull
+          
 
           
             python -m ensurepip --default-pip
