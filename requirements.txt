@@ -6,3 +6,6 @@ httpx
 pytest
 
 uvicorn
+prometheus-client
+prometheus-fastapi-instrumentator
+
