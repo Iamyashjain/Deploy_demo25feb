@@ -59,7 +59,9 @@ jobs:
           cd /home/ubuntu/Deploy_demo25feb
           sudo apt update && sudo apt install -y python3 python3-venv python3-pip
           sudo apt install prometheus -y
-          sudo apt install grafana -y
+          echo "deb [signed-by=/usr/share/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+          sudo apt update
+          sudo apt install grafana
           if [ ! -d "env" ]; then
           python3 -m venv env
           fi
