@@ -51,9 +51,10 @@ jobs:
             set -e  # Exit on any command failure
 
             if [ -d "/home/ubuntu/Deploy_demo25feb" ]; then
-            echo "Directory exists, moving ahead..."
-            git reset --hard  # Prevent merge conflicts
-            git pull origin main
+              echo "Directory exists, moving ahead..."
+              cd /home/ubuntu/Deploy_demo25feb
+              git reset --hard  # Prevent merge conflicts
+              git pull origin main
             else
             cd /home/ubuntu
             git clone https://github.com/Iamyashjain/Deploy_demo25feb
