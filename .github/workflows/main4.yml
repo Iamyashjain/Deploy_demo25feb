@@ -47,7 +47,7 @@ jobs:
 
       - name: Deploy to VM
         run: |
-            ssh -o StrictHostKeyChecking=no ubuntu@44.203.136.127 << 'EOF'
+            ssh -o StrictHostKeyChecking=no ubuntu@44.204.179.241 << 'EOF'
             set -e  # Exit on any command failure
 
             if [ -d "/home/ubuntu/Deploy_demo25feb" ]; then
