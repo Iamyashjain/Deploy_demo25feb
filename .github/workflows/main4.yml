@@ -78,8 +78,8 @@ jobs:
 
           python -m ensurepip --default-pip
 
-          docker build -t demo:latest .
-          docker run -d -p 8080:8080 demo
+          docker build -t demo1:latest .
+          docker run -d -p 8080:8080 demo1
 
        
 
