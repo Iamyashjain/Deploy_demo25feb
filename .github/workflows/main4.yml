@@ -69,21 +69,33 @@ jobs:
           if [ ! -d "env" ]; then
           python3 -m venv env
           fi
-          sudo apt update
-          sudo apt install -y docker.io
-          sudo systemctl enable docker
-          sudo systemctl start docker
+                 echo "Checking if Docker is installed..."
+          
+          # Check if Docker is installed
+          if ! command -v docker &> /dev/null
+          then
+            echo "Docker not found. Installing..."
+            sudo apt update
+            sudo apt install -y docker.io
+            sudo systemctl start docker
+            sudo systemctl enable docker
+            echo "Docker installed successfully."
+          else
+            echo "Docker is already installed."
+          fi
 
-              # Ensure the latest image is pulled
-          docker pull iamyashjain/pipeline
+         
+          # Ensure the latest image is pulled
+          docker pull iamyashjain/pipeline:latest
 
           # Stop and remove old container if running
           docker stop fastapi-container || true
           docker rm fastapi-container || true
 
-          # Run the new container with Prometheus metrics exposed
-          docker run -d --name fastapi-container -p 8080:8000 iamyashjain/pipeline
+          # Run the new container with
+          docker run -d --name fastapi-container -p 8080:8000 iamyashjain/pipeline:latest
 
+        
 
 
           
