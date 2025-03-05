@@ -69,25 +69,19 @@ jobs:
           if [ ! -d "env" ]; then
           python3 -m venv env
           fi
+              # Ensure the latest image is pulled
+          docker pull ajayshiv/fastapi
+
+          # Stop and remove old container if running
+          docker stop fastapi-container || true
+          docker rm fastapi-container || true
+
+          # Run the new container with Prometheus metrics exposed
+          docker run -d --name fastapi-container -p 8080:8000 iamyashjain/pipeline
 
 
-          source env/bin/activate
 
-
-
-
-          python -m ensurepip --default-pip
-
-          docker build -t demo1:latest .
-          docker run -d -p 8080:8080 demo1
-
-       
-
-
-          #sudo systemctl start prometheus
-          #sudo systemctl start grafana-server
-          #sudo systemctl enable prometheus
-          #sudo systemctl enable grafana-server
+          
 
 
 
