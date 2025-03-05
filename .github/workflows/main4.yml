@@ -93,7 +93,7 @@ jobs:
           sudo docker rm fastapi-container || true
 
           # Run the new container with
-          sudo docker run -d --name fastapi-container -p 8080:8000 iamyashjain/pipeline:latest
+          sudo docker run -d --name fastapi-container -p 8080:8080 iamyashjain/pipeline:latest
 
         
 
