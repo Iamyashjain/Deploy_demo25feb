@@ -70,7 +70,7 @@ jobs:
           python3 -m venv env
           fi
               # Ensure the latest image is pulled
-          docker pull ajayshiv/fastapi
+          docker pull iamyashjain/pipeline
 
           # Stop and remove old container if running
           docker stop fastapi-container || true
