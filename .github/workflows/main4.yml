@@ -69,6 +69,11 @@ jobs:
           if [ ! -d "env" ]; then
           python3 -m venv env
           fi
+          sudo apt update
+          sudo apt install -y docker.io
+          sudo systemctl enable docker
+          sudo systemctl start docker
+
               # Ensure the latest image is pulled
           docker pull iamyashjain/pipeline
 
