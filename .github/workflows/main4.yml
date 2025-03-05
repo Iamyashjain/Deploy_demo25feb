@@ -81,18 +81,7 @@ jobs:
           docker build -t demo:latest .
           docker run -d -p 8080:8080 demo
 
-          # Upgrade pip and install requirements (bypassing PEP 668 restrictions)
-          #  python -m pip install --upgrade pip --break-system-packages
-          # python -m pip install -r requirements.txt --break-system-packages
-
-
-
-          # Restart Uvicorn
-          #pkill uvicorn || true  # Ignore error if Uvicorn is not running
-
-          # Start Uvicorn in the background, redirect logs, and detach process
-          #nohup env/bin/uvicorn main:app --host 0.0.0.0 --port 8080 > uvicorn.log 2>&1 & disown
-
+       
 
 
           #sudo systemctl start prometheus
