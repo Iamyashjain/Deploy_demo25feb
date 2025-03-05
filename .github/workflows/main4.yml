@@ -86,14 +86,14 @@ jobs:
 
          
           # Ensure the latest image is pulled
-          docker pull iamyashjain/pipeline:latest
+          sudo docker pull iamyashjain/pipeline:latest
 
           # Stop and remove old container if running
-          docker stop fastapi-container || true
-          docker rm fastapi-container || true
+          sudo docker stop fastapi-container || true
+          sudo docker rm fastapi-container || true
 
           # Run the new container with
-          docker run -d --name fastapi-container -p 8080:8000 iamyashjain/pipeline:latest
+          sudo docker run -d --name fastapi-container -p 8080:8000 iamyashjain/pipeline:latest
 
         
 
